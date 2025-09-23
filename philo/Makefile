@@ -49,7 +49,6 @@ git:
 	@git commit -m "$(m)"
 	@cd ..
 	@git push
-	@cd philo
 
 norma:
 		@norminette .
