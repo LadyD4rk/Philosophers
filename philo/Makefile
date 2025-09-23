@@ -13,10 +13,10 @@ EXEC = philo
 OBJ_DIR = Obj
 
 #src_arquives
-SRCS_DIR = src
+SRCS_DIR = src/philo.c src/teste.c
+SRC_AUX = aux/ft_atoi.c aux/ft_putstr_fd.c
 
-SRC = philo.c
-SRC := $(addprefix $(SRCS_DIR)/, $(SRC))
+SRC = $(SRC_AUX) $(SRCS_DIR)
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 

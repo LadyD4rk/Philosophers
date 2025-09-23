@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/22 15:31:57 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/23 20:07:32 by jobraga-         ###   ########.fr       */
+/*   Created: 2025/09/23 17:07:22 by jobraga-          #+#    #+#             */
+/*   Updated: 2025/09/23 20:10:54 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#include "../philosophers.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/time.h>
+int	ft_atoi(const char *str)
+{
+	int		i;
+	int		num;
+	int		sig;
 
-// aux
-void	ft_putstr_fd(char *s, int fd);
-int		ft_atoi(const char *str);
-
-#endif
+	i = 0;
+	num = 0;
+	sig = 1;
+	while (str[i] == 32 || (str[i] > 8 && str[i] < 14))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if ((str[i]) == '-')
+			sig *= (-1);
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = (num * 10) + (str[i] - 48);
+		i++;
+	}
+	return (num * sig);
+}

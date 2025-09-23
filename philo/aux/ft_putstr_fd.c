@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/22 15:31:57 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/23 20:07:32 by jobraga-         ###   ########.fr       */
+/*   Created: 2025/09/23 16:54:24 by jobraga-          #+#    #+#             */
+/*   Updated: 2025/09/23 20:03:18 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILOSOPHERS_H
-# define PHILOSOPHERS_H
+#include "../philosophers.h"
 
-# include <pthread.h>
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/time.h>
+void	ft_putstr_fd(char *s, int fd)
+{
+	int		i;
 
-// aux
-void	ft_putstr_fd(char *s, int fd);
-int		ft_atoi(const char *str);
-
-#endif
+	i = 0;
+	while (s[i])
+	{
+		write (fd, &s[i], 1);
+		i++;
+	}
+}
