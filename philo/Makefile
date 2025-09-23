@@ -47,7 +47,9 @@ fclean: clean
 git:
 	@git add .
 	@git commit -m "$(m)"
+	@cd ..
 	@git push
+	@cd philo
 
 norma:
 		@norminette .
