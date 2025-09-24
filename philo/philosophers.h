@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 15:31:57 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/24 15:30:28 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/09/24 16:38:43 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <sys/time.h>
 
-typedef struct	s_philo
+typedef	struct	s_philo
 {
 	pthread_t	philo;
 	int			tm_die;
@@ -30,15 +30,20 @@ typedef struct	s_philo
 	int			die;
 }				t_philo;
 
-
 typedef struct	s_data
 {
 	t_philo		*table;
 }				t_data;
 
-// aux
+// aux.c
 void	ft_putstr_fd(char *s, int fd);
 int		ft_atoi(const char *str);
 int		is_valid_argument(int ac, char **av);
+
+//create_table.c
+void	create_table(t_philo *table, int count_philo, char **av);
+
+//main.c
+void	clear_table(t_philo *table, int count_philo);
 
 #endif
