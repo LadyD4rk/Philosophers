@@ -14,7 +14,7 @@ OBJ_DIR = Obj
 
 #src_arquives
 SRCS_DIR = src/philo.c src/teste.c
-SRC_AUX = aux/ft_atoi.c aux/ft_putstr_fd.c
+SRC_AUX = aux/ft_atoi.c aux/ft_putstr_fd.c aux/is_valid_argument.c
 
 SRC = $(SRC_AUX) $(SRCS_DIR)
 
@@ -51,7 +51,7 @@ git:
 	@git push
 
 norma:
-		@norminette .
+	@norminette .
 
 re: fclean all
 

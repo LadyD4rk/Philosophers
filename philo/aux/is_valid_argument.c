@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   is_valid_argument.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 17:07:22 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/24 11:08:14 by jobraga-         ###   ########.fr       */
+/*   Created: 2025/09/24 10:36:28 by jobraga-          #+#    #+#             */
+/*   Updated: 2025/09/24 10:36:53 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_atoi(const char *str)
+int	is_valid_argument(int ac, char **av)
 {
-	int		i;
-	int		num;
-	int		sig;
+	int		arg;
+	int		cha;
 
-	i = 0;
-	num = 0;
-	sig = 1;
-	while (str[i] == 32 || (str[i] > 8 && str[i] < 14))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	arg = 1;
+	while (arg < ac)
 	{
-		if ((str[i]) == '-')
-			sig *= (-1);
-		i++;
+		cha = 0;
+		while (av[arg][cha])
+		{
+			if ((!(av[arg][cha] >= '0' && av[arg][cha] <= '9'))
+				|| ft_atoi(av[arg]) < 1)
+			{
+				ft_putstr_fd("Invalid argument", 2);
+				return (0);
+			}
+			cha++;
+		}
+		arg++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num = (num * 10) + (str[i] - 48);
-		i++;
-	}
-	return (num * sig);
+	return (1);
 }
