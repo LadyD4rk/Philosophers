@@ -8,12 +8,12 @@ RESET     = \033[0m
 
 #flags
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -I. -Iincludes
+CFLAGS = -Wall -Werror -Wextra -g -I. -Iincludes -pthread
 EXEC = philo
 OBJ_DIR = Obj
 
 #src_arquives
-SRCS_DIR = src/philo.c src/teste.c src/create_table.c
+SRCS_DIR = src/philo.c src/teste.c src/create_table.c src/clock_time.c
 SRC_AUX = aux/ft_atoi.c aux/ft_putstr_fd.c aux/is_valid_argument.c
 
 SRC = $(SRC_AUX) $(SRCS_DIR)

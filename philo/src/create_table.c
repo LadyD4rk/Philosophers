@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 16:32:44 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/24 16:39:26 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/09/25 12:28:12 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 void	*routine(void *arg)
 {
-	printf("Existe ID: %ld\n", pthread_self());
-	usleep(1000 * 100);
 	(void)arg;
 	return (NULL);
 }
 
 void	inicialize_philo(t_philo *philo)
 {
+	pthread_create(&philo->philo, NULL, routine, philo);
 	philo->tm_die = 0;
 	philo->tm_eat = 0;
 	philo->tm_sleep = 0;
@@ -39,7 +38,6 @@ void	create_table(t_philo *table, int count_philo, char **av)
 	num = 1;
 	while (num <= count_philo)
 	{
-		pthread_create(&table[num].philo, NULL, routine, &table[num]);
 		inicialize_philo(&table[num]);
 		printf("philo: %d tm die: %d tm eat: %d tm sleep: %d count_eat: %d die: %d\n",
 			num, table[num].tm_die, table[num].tm_eat, table[num].tm_sleep,

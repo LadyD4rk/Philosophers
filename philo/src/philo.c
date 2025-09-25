@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:31:42 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/24 16:38:54 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/09/25 17:40:48 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ int	main(int ac, char **av)
 		if (is_valid_argument(ac, av) == 0)
 			return (0);
 		create_table(data.table, ft_atoi(av[1]), av);
+		create_time(&data.time, av);
+		printf("\n\nTIME\n");
+		printf("Start time: %ld\n", data.time.start_time);
+		printf("Time eat: %d\n", data.time.time_eat);
+		printf("Time die: %d\n", data.time.time_die);
+		printf("Time sleep: %d\n", data.time.time_sleep);
 	}
 	else
 		return (ft_putstr_fd("Invalid number of arguments", 2), 1);
