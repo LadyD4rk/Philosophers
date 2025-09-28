@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 15:31:57 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/26 12:57:10 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/09/28 14:08:13 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_data
 }				t_data;
 
 void	clock_(t_time *time);
+void	philo_dream(t_philo *philo);
+void	thread_create(t_data *data, int count_philo);
 
 // aux.c
 void	ft_putstr_fd(char *s, int fd);
@@ -56,9 +58,10 @@ int		ft_atoi(const char *str);
 int		is_valid_argument(int ac, char **av);
 
 //create_table.c
-void	create_table(t_philo *table, t_time time, int count_philo, char **av);
+void	create_table(t_data *data, t_time time, int count_philo);
 
 //clock_time.c
+void	ft_usleep(int time);
 long	ft_get_time(void);
 void	create_time(t_time *time, char **av);
 

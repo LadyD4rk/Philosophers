@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:31:42 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/26 12:39:41 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/09/28 14:23:58 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	clear_table(t_philo *table, int count_philo)
 {
 	int		num;
 
-	num = 1;
-	while (num <= count_philo)
+	num = 0;
+	while (num < count_philo)
 	{
 		pthread_join(table[num].philo, NULL);
 		num++;
@@ -43,8 +43,9 @@ int	main(int ac, char **av)
 		if (is_valid_argument(ac, av) == 0)
 			return (0);
 		create_time(&data.time, av);
-		create_table(data.table, data.time, ft_atoi(av[1]), av);
-		//clock_(&data.time);
+		create_table(&data, data.time, ft_atoi(av[1]));
+		if (data.table)
+			thread_create(&data, ft_atoi(av[1]));
 	}
 	else
 		return (ft_putstr_fd("Invalid number of arguments", 2), 1);
