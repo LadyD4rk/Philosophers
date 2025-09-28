@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:31:42 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/28 14:23:58 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/09/28 14:33:52 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,6 @@ void	clear_table(t_philo *table, int count_philo)
 		num++;
 	}
 	free(table);
-}
-
-void	clock_(t_time *time)
-{
-	printf("\n\nTIME\n");
-	printf("Start time: %ld\n", time->start_time);
-	printf("Time eat: %d\n", time->time_eat);
-	printf("Time die: %d\n", time->time_die);
-	printf("Time sleep: %d\n", time->time_sleep);
 }
 
 int	main(int ac, char **av)
