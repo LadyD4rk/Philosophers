@@ -44,7 +44,7 @@ fclean: clean
 		@echo " 🗑️  Andou, andou e no lixo parouu!"
 		@rm -f $(EXEC)
 
-git:
+git: fclean
 	@git add .
 	@git commit -m "$(m)"
 	@cd ..

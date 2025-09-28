@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 17:03:45 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/25 17:24:09 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/09/26 12:26:05 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	create_time(t_time *time, char **av)
 	time->time_sleep = ft_atoi(av[4]);
 	if (av[5])
 		time->count_eat = ft_atoi(av[5]);
+	else
+		time->count_eat = -1;
 	time->start_time = ft_get_time();
 	(void)time;
 }
