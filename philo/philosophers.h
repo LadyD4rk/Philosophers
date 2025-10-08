@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:23:30 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/08 13:00:03 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:26:12 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_philo
 
 typedef struct s_data
 {
+	pthread_t		waiter;
 	t_args			args;
 	t_philo			*philos;
 	t_mutex			mutex;
@@ -69,11 +70,6 @@ void	ft_usleep(int time);
 long	ft_get_time(void);
 
 // init.c
-void	inicialize_args(t_args *args, char **av);
-int		inicialize_mutex(t_data *data, t_mutex *mutex);
-t_philo	*create_table(t_data *data);
-
-//main.c
-void	inicialize_philo(t_philo *philo, int id, t_data *data);
+void 	initialize_all(t_data *data, char **av);
 
 #endif

@@ -6,20 +6,11 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:28:13 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/08 13:02:13 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:35:12 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
-
-void	print_arg(t_args *a)
-{
-	printf("count_eat: %i\n", a->count_eat);
-	printf("count_philo: %i\n", a->count_philo);
-	printf("time_die: %i\n", a->time_die);
-	printf("time_sleep: %i\n", a->time_sleep);
-	printf("time_eat: %i\n", a->time_eat);
-}
 
 void	print_philo(t_philo *table, int count)
 {
@@ -28,20 +19,16 @@ void	print_philo(t_philo *table, int count)
 	i = 0;
 	while (i < count)
 	{
-		print_arg(&table[i].data->args);
+		printf("count_eat: %i\n", table[i].data->args.count_eat);
+		printf("count_philo: %i\n", table[i].data->args.count_philo);
+		printf("time_die: %i\n", table[i].data->args.time_die);
+		printf("time_sleep: %i\n", table[i].data->args.time_sleep);
+		printf("time_eat: %i\n", table[i].data->args.time_eat);
 		printf("id: %i\n", table[i].id);
 		printf("last_eat_time: %ld\n", table[i].last_eat_time);
 		printf("count_eat: %i\n\n\n", table[i].count_eat);
 		i++;
 	}
-}
-
-void	inicialize_philo(t_philo *philo, int id, t_data *data)
-{
-	philo->data = data;
-	philo->last_eat_time = ft_get_time();
-	philo->id = id + 1;
-	philo->count_eat = 0;
 }
 
 void	clear_all(t_philo *philos, t_mutex *mutex)
@@ -52,6 +39,31 @@ void	clear_all(t_philo *philos, t_mutex *mutex)
 		free(mutex->forks);
 }
 
+void	*routine(void *arg)
+{
+	t_philo	*philo = (t_philo *)arg;
+	printf("Philo %d: teste e teste\n", philo->id);
+	return (NULL);
+}
+
+void	start_dinner(t_philo *philos)
+{
+	int		id;
+
+	id = 0;
+	while (id < philos->data->args.count_philo)
+	{
+		pthread_create(&philos[id].philo, NULL, &routine, &philos[id]);
+		id++;
+	}
+	id = 0;
+	while (id < philos->data->args.count_philo)
+	{
+		pthread_join(philos[id].philo, NULL);
+		id++;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_data		data;
@@ -60,10 +72,7 @@ int	main(int ac, char **av)
 	{
 		if (is_valid_argument(ac, av) == 0)
 			return (1);
-		inicialize_args(&data.args, av);
-		if (inicialize_mutex(&data, &data.mutex) == 1)
-			return (clear_all(data.philos, &data.mutex), 1);
-		data.philos = create_table(&data);
+		initialize_all(&data, av);
 		//print_philo(data.philos, data.args.count_philo);
 		clear_all(data.philos, &data.mutex);
 	}

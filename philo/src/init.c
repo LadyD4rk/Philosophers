@@ -6,13 +6,13 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/08 13:01:48 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/08 16:19:06 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	inicialize_args(t_args *args, char **av)
+static void	initialize_args(t_args *args, char **av)
 {
 	if (av[5])
 		args->count_eat = ft_atoi(av[5]);
@@ -24,7 +24,7 @@ void	inicialize_args(t_args *args, char **av)
 	args->time_eat = ft_atoi(av[4]);
 }
 
-int	inicialize_mutex(t_data *data, t_mutex *mutex)
+static int	initialize_mutex(t_data *data, t_mutex *mutex)
 {
 	int		fork;
 
@@ -43,7 +43,17 @@ int	inicialize_mutex(t_data *data, t_mutex *mutex)
 	return (0);
 }
 
-t_philo	*create_table(t_data *data)
+static void	initialize_philo(t_philo *philo, int id, t_data *data)
+{
+	philo->data = data;
+	philo->last_eat_time = ft_get_time();
+	philo->id = id + 1;
+	philo->count_eat = 0;
+	philo->l_fork = &data->mutex.forks[id];
+	philo->r_fork = &data->mutex.forks[id % (data->args.count_philo - 1)];
+}
+
+static t_philo	*create_table(t_data *data)
 {
 	int		philo;
 	t_philo	*table;
@@ -54,8 +64,15 @@ t_philo	*create_table(t_data *data)
 	philo = 0;
 	while (philo < data->args.count_philo)
 	{
-		inicialize_philo(&table[philo], philo, data);
+		initialize_philo(&table[philo], philo, data);
 		philo++;
 	}
 	return (table);
+}
+
+void 	initialize_all(t_data *data, char **av)
+{
+	initialize_args(&data->args, av);
+	initialize_mutex(data, &data->mutex);
+	data->philos = create_table(data);
 }
