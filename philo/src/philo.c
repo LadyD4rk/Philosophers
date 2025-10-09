@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:28:13 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/08 16:35:12 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/09 11:01:52 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	main(int ac, char **av)
 		if (is_valid_argument(ac, av) == 0)
 			return (1);
 		initialize_all(&data, av);
+		start_dinner(data.philos);
 		//print_philo(data.philos, data.args.count_philo);
 		clear_all(data.philos, &data.mutex);
 	}
