@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:23:30 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/08 16:26:12 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/09 15:44:36 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_philo
 	pthread_t		philo;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
+	long			start_time;
 	long			last_eat_time;
 	int				id;
 	int				count_eat;
@@ -65,11 +66,22 @@ int		ft_atoi(const char *str);
 int		is_valid_argument(int ac, char **av);
 void	*ft_calloc(size_t num, size_t tam);
 
-// aux/time.c
+// aux/aux_function.c
 void	ft_usleep(int time);
 long	ft_get_time(void);
+void	print_write(char *str, t_philo *philo);
 
 // init.c
 void 	initialize_all(t_data *data, char **av);
+
+// routine.c
+void	philo_eat(t_philo *philo);
+void	philo_dream(t_philo *philo);
+void	philo_think(t_philo *philo);
+void	*routine(void *arg);
+
+// start_dinner.c
+void	*monitor_dinner(void *arg);
+void	start_dinner(t_philo *philos);
 
 #endif

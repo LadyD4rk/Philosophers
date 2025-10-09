@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/08 16:19:06 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/09 15:57:16 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	initialize_mutex(t_data *data, t_mutex *mutex)
 	}
 	pthread_mutex_init(&mutex->write_flag, NULL);
 	pthread_mutex_init(&mutex->dead_flag, NULL);
+	//pthread_mutex_lock(&mutex->dead_flag);
 	mutex->init = 1;
 	return (0);
 }
@@ -47,6 +48,7 @@ static void	initialize_philo(t_philo *philo, int id, t_data *data)
 {
 	philo->data = data;
 	philo->last_eat_time = ft_get_time();
+	philo->start_time = ft_get_time();
 	philo->id = id + 1;
 	philo->count_eat = 0;
 	philo->l_fork = &data->mutex.forks[id];

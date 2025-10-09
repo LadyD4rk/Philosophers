@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:28:13 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/09 11:01:52 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/09 16:14:00 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,23 @@ void	print_philo(t_philo *table, int count)
 
 void	clear_all(t_philo *philos, t_mutex *mutex)
 {
+	int		id;
+	
+	//pthread_join(philos->data->waiter, NULL);
+	if (mutex)
+	{
+		id = 0;
+		while (id < philos->data->args.count_philo)
+		{
+			pthread_join(philos[id].philo, NULL);
+			id++;
+		}
+		free(mutex->forks);
+		pthread_mutex_destroy(&mutex->dead_flag);
+		pthread_mutex_destroy(&mutex->write_flag);
+	}
 	if (philos)
 		free(philos);
-	if (mutex->forks)
-		free(mutex->forks);
-}
-
-void	*routine(void *arg)
-{
-	t_philo	*philo = (t_philo *)arg;
-	printf("Philo %d: teste e teste\n", philo->id);
-	return (NULL);
-}
-
-void	start_dinner(t_philo *philos)
-{
-	int		id;
-
-	id = 0;
-	while (id < philos->data->args.count_philo)
-	{
-		pthread_create(&philos[id].philo, NULL, &routine, &philos[id]);
-		id++;
-	}
-	id = 0;
-	while (id < philos->data->args.count_philo)
-	{
-		pthread_join(philos[id].philo, NULL);
-		id++;
-	}
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 19:45:00 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/06 16:28:10 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/09 12:31:34 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,3 @@ void	*ft_calloc(size_t num, size_t tam)
 	memset(buffer, 0, num * tam);
 	return (buffer);
 }
-
-// int main()
-// {
-// 	printf("%d\n", ft_calloc(0,0));
-// 	printf("%d\n", calloc(0,0));
-// }
