@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:28:13 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/09 16:14:00 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:48:56 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,10 @@ void	print_philo(t_philo *table, int count)
 
 void	clear_all(t_philo *philos, t_mutex *mutex)
 {
-	int		id;
-	
-	//pthread_join(philos->data->waiter, NULL);
+	if (philos->data->waiter)
+		pthread_join(philos->data->waiter, NULL);
 	if (mutex)
 	{
-		id = 0;
-		while (id < philos->data->args.count_philo)
-		{
-			pthread_join(philos[id].philo, NULL);
-			id++;
-		}
 		free(mutex->forks);
 		pthread_mutex_destroy(&mutex->dead_flag);
 		pthread_mutex_destroy(&mutex->write_flag);

@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/09 15:57:16 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/10 14:47:17 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static int	initialize_mutex(t_data *data, t_mutex *mutex)
 	}
 	pthread_mutex_init(&mutex->write_flag, NULL);
 	pthread_mutex_init(&mutex->dead_flag, NULL);
-	//pthread_mutex_lock(&mutex->dead_flag);
+	pthread_mutex_init(&mutex->meat_flag, NULL);
+	pthread_mutex_lock(&mutex->dead_flag);
 	mutex->init = 1;
 	return (0);
 }

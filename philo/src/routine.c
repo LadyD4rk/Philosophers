@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:13:41 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/09 12:38:09 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/13 12:23:03 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	philo_eat(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->data->mutex.meat_flag);
 	print_write("is eating", philo);
 	philo->last_eat_time = ft_get_time();
 	philo->count_eat++;
 	ft_usleep(philo->data->args.time_eat);
+	pthread_mutex_unlock(&philo->data->mutex.meat_flag);
 }
 
 void	philo_dream(t_philo *philo)
