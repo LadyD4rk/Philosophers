@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:28:13 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/13 15:48:56 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:44:52 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	print_philo(t_philo *table, int count)
 
 void	clear_all(t_philo *philos, t_mutex *mutex)
 {
+	int		i;
+	
+	i = 0;
 	if (philos->data->waiter)
 		pthread_join(philos->data->waiter, NULL);
 	if (mutex)
@@ -42,7 +45,14 @@ void	clear_all(t_philo *philos, t_mutex *mutex)
 		pthread_mutex_destroy(&mutex->write_flag);
 	}
 	if (philos)
+	{
+		while (i < philos->data->args.count_philo)
+		{
+			pthread_join(philos[i].philo, NULL);
+			i++;
+		}
 		free(philos);
+	}
 }
 
 int	main(int ac, char **av)
@@ -54,7 +64,10 @@ int	main(int ac, char **av)
 		if (is_valid_argument(ac, av) == 0)
 			return (1);
 		initialize_all(&data, av);
-		start_dinner(data.philos);
+		if (data.philo_check == 1)
+			start_dinner(data.philos);
+		while(1)
+			ft_usleep(1000);
 		//print_philo(data.philos, data.args.count_philo);
 		clear_all(data.philos, &data.mutex);
 	}

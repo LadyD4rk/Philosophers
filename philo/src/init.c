@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/10 14:47:17 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:00:02 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	initialize_philo(t_philo *philo, int id, t_data *data)
 	philo->id = id + 1;
 	philo->count_eat = 0;
 	philo->l_fork = &data->mutex.forks[id];
-	philo->r_fork = &data->mutex.forks[id % (data->args.count_philo - 1)];
+	philo->r_fork = &data->mutex.forks[(id + 1) % data->args.count_philo];
 }
 
 static t_philo	*create_table(t_data *data)
@@ -70,11 +70,14 @@ static t_philo	*create_table(t_data *data)
 		initialize_philo(&table[philo], philo, data);
 		philo++;
 	}
+	if (philo == data->args.count_philo)
+		data->philo_check = 1;
 	return (table);
 }
 
 void 	initialize_all(t_data *data, char **av)
 {
+	data->philo_check = 0;
 	initialize_args(&data->args, av);
 	initialize_mutex(data, &data->mutex);
 	data->philos = create_table(data);

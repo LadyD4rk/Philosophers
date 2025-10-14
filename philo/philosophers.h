@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:23:30 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/10 14:46:39 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/14 10:29:06 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_data
 	t_args			args;
 	t_philo			*philos;
 	t_mutex			mutex;
+	int				philo_check;
 }				t_data;
 
 // aux
