@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/14 11:00:02 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:09:57 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	initialize_args(t_args *args, char **av)
 	args->time_sleep = ft_atoi(av[3]);
 	args->time_eat = ft_atoi(av[4]);
 }
+
 
 static int	initialize_mutex(t_data *data, t_mutex *mutex)
 {

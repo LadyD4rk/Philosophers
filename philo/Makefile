@@ -49,7 +49,6 @@ git: fclean
 	@git add .
 	@git commit -m "$(m)"
 	@cd ..
-	@git pull --rebase origin main
 	@git push
 
 norma:
