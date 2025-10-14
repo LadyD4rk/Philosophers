@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/14 14:18:08 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:20:07 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static t_philo	*create_table(t_data *data)
 	return (table);
 }
 
-void 	initialize_all(t_data *data, char **av)
+void	initialize_all(t_data *data, char **av)
 {
 	data->philo_check = 0;
 	initialize_args(&data->args, av);

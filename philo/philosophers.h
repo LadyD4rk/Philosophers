@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:23:30 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/14 10:29:06 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:20:22 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <sys/time.h>
 # include <stdint.h>
 
-typedef struct s_data t_data;
+typedef struct s_data	t_data;
 
 typedef struct s_mutex
 {
@@ -74,7 +74,7 @@ long	ft_get_time(void);
 void	print_write(char *str, t_philo *philo);
 
 // init.c
-void 	initialize_all(t_data *data, char **av);
+void	initialize_all(t_data *data, char **av);
 
 // routine.c
 void	philo_eat(t_philo *philo);

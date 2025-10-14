@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:25:39 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/14 10:35:07 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/14 14:19:25 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 void	*routine(void *arg)
 {
 	t_philo	*philo;
-	
+
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
 		ft_usleep(10);
