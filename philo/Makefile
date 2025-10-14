@@ -49,7 +49,7 @@ git: fclean
 	@git add .
 	@git commit -m "$(m)"
 	@cd ..
-	@git push -u origin main
+	@git push
 
 norma:
 	@norminette .
