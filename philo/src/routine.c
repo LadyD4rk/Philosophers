@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:13:41 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/14 11:50:21 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/16 14:19:33 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	take_forks(t_philo *philo)
 
 void	philo_eat(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->data->mutex.meal_flag);
 	take_forks(philo);
-	pthread_mutex_lock(&philo->data->mutex.meat_flag);
 	philo->last_eat_time = ft_get_time();
 	philo->count_eat++;
-	pthread_mutex_unlock(&philo->data->mutex.meat_flag);
+	pthread_mutex_unlock(&philo->data->mutex.meal_flag);
 	print_write("is eating", philo);
 	ft_usleep(philo->data->args.time_eat);
 	pthread_mutex_unlock(philo->l_fork);

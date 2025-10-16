@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/14 14:20:07 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/16 16:43:12 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ static int	initialize_mutex(t_data *data, t_mutex *mutex)
 	}
 	pthread_mutex_init(&mutex->write_flag, NULL);
 	pthread_mutex_init(&mutex->dead_flag, NULL);
-	pthread_mutex_init(&mutex->meat_flag, NULL);
-	pthread_mutex_lock(&mutex->dead_flag);
+	pthread_mutex_init(&mutex->meal_flag, NULL);
 	mutex->init = 1;
 	return (0);
 }
@@ -78,6 +77,7 @@ static t_philo	*create_table(t_data *data)
 void	initialize_all(t_data *data, char **av)
 {
 	data->philo_check = 0;
+	data->dead_flag = 0;
 	initialize_args(&data->args, av);
 	initialize_mutex(data, &data->mutex);
 	data->philos = create_table(data);

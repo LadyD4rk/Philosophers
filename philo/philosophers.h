@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:23:30 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/14 14:20:22 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:03:53 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_mutex
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	write_flag;
 	pthread_mutex_t	dead_flag;
-	pthread_mutex_t	meat_flag;
+	pthread_mutex_t	meal_flag;
 	int				init;
 }				t_mutex;
 
@@ -59,6 +59,7 @@ typedef struct s_data
 	t_args			args;
 	t_philo			*philos;
 	t_mutex			mutex;
+	int				dead_flag;
 	int				philo_check;
 }				t_data;
 
