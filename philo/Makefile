@@ -13,7 +13,8 @@ EXEC = philo
 OBJ_DIR = Obj
 
 #src_arquives
-SRCS_DIR = src/philo.c src/init.c src/routine.c src/start_dinner.c
+SRCS_DIR = src/philo.c src/init.c src/routine.c src/start_dinner.c \
+	src/utils_threads.c
 SRC_AUX = aux/ft_atoi.c aux/ft_putstr_fd.c aux/is_valid_argument.c \
 	aux/aux_function.c aux/ft_calloc.c
 

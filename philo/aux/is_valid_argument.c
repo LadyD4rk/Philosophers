@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:36:28 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/09/24 10:36:53 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:43:22 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	is_valid_argument(int ac, char **av)
 			if ((!(av[arg][cha] >= '0' && av[arg][cha] <= '9'))
 				|| ft_atoi(av[arg]) < 1)
 			{
-				ft_putstr_fd("Invalid argument", 2);
+				ft_putstr_fd("ERROR: Invalid argument", 2);
 				return (0);
 			}
 			cha++;

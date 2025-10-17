@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:23:30 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/17 09:56:20 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/17 12:05:07 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ typedef struct s_mutex
 	pthread_mutex_t	write_flag;
 	pthread_mutex_t	dead_flag;
 	pthread_mutex_t	meal_flag;
-	int				init;
+	int				init_write_flag;
+	int				init_dead_flag;
+	int				init_meal_flag;
 }				t_mutex;
 
 typedef struct s_args
@@ -76,7 +78,7 @@ long	ft_get_time(void);
 void	print_write(char *str, t_philo *philo);
 
 // init.c
-void	initialize_all(t_data *data, char **av);
+int		initialize_all(t_data *data, char **av);
 
 // routine.c
 void	philo_eat(t_philo *philo);
@@ -87,5 +89,9 @@ void	*routine(void *arg);
 // start_dinner.c
 void	*monitor_dinner(void *arg);
 void	start_dinner(t_philo *philos);
+
+// utils_threads.c
+int		check_dead(t_data *data);
+int		check_limite_eat(t_philo *philos);
 
 #endif

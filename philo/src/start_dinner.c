@@ -6,55 +6,29 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:25:39 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/17 10:44:18 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:39:07 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int		check_dead(t_data *data)
-{
-	int		check;
-
-	pthread_mutex_lock(&data->mutex.dead_flag);
-	check = data->dead_flag;
-	pthread_mutex_unlock(&data->mutex.dead_flag);
-	return (check);
-}
-
-/* int		check_limite_eat() */
-
 void	*monitor_dinner(void *arg)
 {
-	t_data		*data;
 	t_philo		*philos;
-	int			id;
+	//t_data		*data;
+	//int			id;
 
 	philos = (t_philo *)arg;
-	data = philos->data;
+	//data = philos->data;
 	printf("Monitor iniciado!\n");
 	while (1)
 	{
-		id = 0;
-		while (id < data->args.count_philo)
-		{
-			pthread_mutex_lock(&data->mutex.meal_flag);
-			if (philos[id].count_eat == data->args.count_eat)
-			{
-				printf("o %i comeu\n", id + 1);
-				pthread_mutex_lock(&data->mutex.dead_flag);
-				data->dead_flag = 1;
-				pthread_mutex_unlock(&data->mutex.dead_flag);
-				pthread_mutex_unlock(&data->mutex.meal_flag);
-				return(NULL);
-			}
-			else
-				pthread_mutex_unlock(&data->mutex.meal_flag);
-			id++;
-		}
+		//id = 0;
+		if (check_limite_eat(philos))
+			return (NULL);
 		ft_usleep(1000);
 	}
-	return(NULL);
+	return (NULL);
 }
 
 void	*routine(void *arg)
@@ -69,13 +43,12 @@ void	*routine(void *arg)
 		ft_usleep(10);
 	while (!check_dead(data))
 	{
-		if (!philo->limit_eat)
-			philo_eat(philo);
+		philo_eat(philo);
 		if (check_dead(data))
-			break;
+			break ;
 		philo_dream(philo);
 		if (check_dead(data))
-			break;
+			break ;
 		philo_think(philo);
 	}
 	return (NULL);

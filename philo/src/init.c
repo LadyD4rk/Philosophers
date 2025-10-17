@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/17 09:57:32 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/17 13:47:47 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,26 @@ static void	initialize_args(t_args *args, char **av)
 	args->time_eat = ft_atoi(av[4]);
 }
 
+int	initialize_mutex2(t_mutex *mutex)
+{
+	mutex->init_write_flag = 0;
+	mutex->init_dead_flag = 0;
+	mutex->init_meal_flag = 0;
+	if (pthread_mutex_init(&mutex->write_flag, NULL) != 0)
+		return (1);
+	else
+		mutex->init_write_flag = 1;
+	if (pthread_mutex_init(&mutex->dead_flag, NULL) != 0)
+		return (1);
+	else
+		mutex->init_dead_flag = 1;
+	if (pthread_mutex_init(&mutex->meal_flag, NULL) != 0)
+		return (1);
+	else
+		mutex->init_meal_flag = 0;
+	return (0);
+}
+
 static int	initialize_mutex(t_data *data, t_mutex *mutex)
 {
 	int		fork;
@@ -34,13 +54,16 @@ static int	initialize_mutex(t_data *data, t_mutex *mutex)
 	fork = 0;
 	while (fork < data->args.count_philo)
 	{
-		pthread_mutex_init(&mutex->forks[fork], NULL);
+		if (pthread_mutex_init(&mutex->forks[fork], NULL) != 0)
+		{
+			while (--fork >= 0)
+				pthread_mutex_destroy(&mutex->forks[fork]);
+			return (1);
+		}
 		fork++;
 	}
-	pthread_mutex_init(&mutex->write_flag, NULL);
-	pthread_mutex_init(&mutex->dead_flag, NULL);
-	pthread_mutex_init(&mutex->meal_flag, NULL);
-	mutex->init = 1;
+	if (initialize_mutex2(mutex))
+		return (1);
 	return (0);
 }
 
@@ -75,11 +98,15 @@ static t_philo	*create_table(t_data *data)
 	return (table);
 }
 
-void	initialize_all(t_data *data, char **av)
+int	initialize_all(t_data *data, char **av)
 {
 	data->philo_check = 0;
 	data->dead_flag = 0;
 	initialize_args(&data->args, av);
-	initialize_mutex(data, &data->mutex);
+	if (initialize_mutex(data, &data->mutex))
+		return (1);
 	data->philos = create_table(data);
+	if (!data->philos)
+		return (1);
+	return (0);
 }
