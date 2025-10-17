@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:23:30 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/16 11:03:53 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:56:20 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_philo
 	long			last_eat_time;
 	int				id;
 	int				count_eat;
+	int				limit_eat;
 }				t_philo;
 
 typedef struct s_data

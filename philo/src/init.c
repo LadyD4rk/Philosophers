@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/16 16:43:12 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/17 09:57:32 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	initialize_philo(t_philo *philo, int id, t_data *data)
 	philo->start_time = ft_get_time();
 	philo->id = id + 1;
 	philo->count_eat = 0;
+	philo->limit_eat = 0;
 	philo->l_fork = &data->mutex.forks[id];
 	philo->r_fork = &data->mutex.forks[(id + 1) % data->args.count_philo];
 }

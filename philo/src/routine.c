@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:13:41 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/16 14:19:33 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/17 10:44:08 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	philo_eat(t_philo *philo)
 	take_forks(philo);
 	philo->last_eat_time = ft_get_time();
 	philo->count_eat++;
+	if (philo->count_eat == philo->data->args.count_eat)
+		philo->limit_eat = 1;
 	pthread_mutex_unlock(&philo->data->mutex.meal_flag);
 	print_write("is eating", philo);
 	ft_usleep(philo->data->args.time_eat);
