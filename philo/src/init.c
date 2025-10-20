@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/17 16:52:19 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/20 10:48:05 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	initialize_args(t_args *args, char **av)
 		args->count_eat = -1;
 	args->count_philo = ft_atoi(av[1]);
 	args->time_die = ft_atoi(av[2]);
-	args->time_sleep = ft_atoi(av[3]);
-	args->time_eat = ft_atoi(av[4]);
+	args->time_eat = ft_atoi(av[3]);
+	args->time_sleep = ft_atoi(av[4]);
 }
 
 int	initialize_mutex2(t_mutex *mutex)

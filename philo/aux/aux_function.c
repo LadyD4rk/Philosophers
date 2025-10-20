@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:43:42 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/17 16:54:58 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/20 10:53:17 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	print_write(char *str, t_philo *philo)
 {
 	long	time;
 
+	if (check_dead(philo->data))
+		return ;
 	pthread_mutex_lock(&philo->data->mutex.write_flag);
 	time = ft_get_time() - philo->start_time;
 	printf("%ld %i %s\n", time, philo->id, str);
