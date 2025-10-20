@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:27:37 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/20 11:40:31 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/20 14:20:20 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	check_limite_eat(t_philo *philos)
 	}
 	if (id == data->args.count_philo)
 	{
+		printf("COMEU\n");
 		pthread_mutex_lock(&data->mutex.dead_flag);
 		data->dead_flag = 1;
 		pthread_mutex_unlock(&data->mutex.dead_flag);
@@ -62,6 +63,7 @@ int	check_time_to_die(t_philo *philos)
 	{
 		if (ft_get_time() - philos[id].last_eat_time > data->args.time_die)
 		{
+			printf("MORREU\n");
 			pthread_mutex_lock(&data->mutex.dead_flag);
 			data->dead_flag = 1;
 			data->id_dead = id + 1;

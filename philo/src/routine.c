@@ -6,15 +6,15 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:13:41 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/17 10:44:08 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/20 14:04:41 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	take_forks(t_philo *philo)
+void	take_forks(t_philo *philo, int id)
 {
-	if (philo->id % 2 == 0)
+	if (id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->r_fork);
 		print_write("has taken a fork", philo);
@@ -32,8 +32,8 @@ void	take_forks(t_philo *philo)
 
 void	philo_eat(t_philo *philo)
 {
+	take_forks(philo, philo->id);
 	pthread_mutex_lock(&philo->data->mutex.meal_flag);
-	take_forks(philo);
 	philo->last_eat_time = ft_get_time();
 	philo->count_eat++;
 	if (philo->count_eat == philo->data->args.count_eat)
