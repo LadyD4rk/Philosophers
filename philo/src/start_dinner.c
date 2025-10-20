@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:25:39 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/17 11:39:07 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/19 21:30:48 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 void	*monitor_dinner(void *arg)
 {
 	t_philo		*philos;
-	//t_data		*data;
-	//int			id;
 
 	philos = (t_philo *)arg;
-	//data = philos->data;
 	printf("Monitor iniciado!\n");
 	while (1)
 	{
-		//id = 0;
 		if (check_limite_eat(philos))
 			return (NULL);
+		if (check_time_to_die(philos))
+			return(NULL);
 		ft_usleep(1000);
 	}
 	return (NULL);
@@ -38,7 +36,6 @@ void	*routine(void *arg)
 
 	philo = (t_philo *)arg;
 	data = philo->data;
-	(void)data;
 	if (philo->id % 2 == 0)
 		ft_usleep(10);
 	while (!check_dead(data))
@@ -67,6 +64,8 @@ void	start_dinner(t_philo *philos)
 	pthread_create(&philos->data->waiter, NULL, &monitor_dinner, philos);
 	pthread_join(philos->data->waiter, NULL);
 	id = 0;
+	if (philos->data->id_dead > 0)
+		print_write("died", &philos[philos->data->id_dead]);
 	while (id < philos->data->args.count_philo)
 	{
 		pthread_join(philos[id].philo, NULL);

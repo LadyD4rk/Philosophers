@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 10:36:28 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/17 11:43:22 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/19 21:04:01 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	is_valid_argument(int ac, char **av)
 	int		arg;
 	int		cha;
 
+	if (ft_atoi(av[1]) > 200)
+		return (ft_putstr_fd("ERROR: Invalid argument", 2), 0);
 	arg = 1;
 	while (arg < ac)
 	{

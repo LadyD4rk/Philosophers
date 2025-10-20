@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:23:30 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/17 12:05:07 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/19 21:21:28 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_data
 	t_args			args;
 	t_philo			*philos;
 	t_mutex			mutex;
+	int				id_dead;
 	int				dead_flag;
 	int				philo_check;
 }				t_data;
@@ -78,20 +79,25 @@ long	ft_get_time(void);
 void	print_write(char *str, t_philo *philo);
 
 // init.c
-int		initialize_all(t_data *data, char **av);
+void	initialize_args(t_args *args, char **av);
+int		initialize_mutex2(t_mutex *mutex);
+int		initialize_mutex(t_data *data, t_mutex *mutex);
+void	initialize_philo(t_philo *philo, int id, t_data *data);
+t_philo	*create_table(t_data *data);
 
 // routine.c
 void	philo_eat(t_philo *philo);
 void	philo_dream(t_philo *philo);
 void	philo_think(t_philo *philo);
-void	*routine(void *arg);
 
 // start_dinner.c
 void	*monitor_dinner(void *arg);
 void	start_dinner(t_philo *philos);
+void	*routine(void *arg);
 
 // utils_threads.c
 int		check_dead(t_data *data);
 int		check_limite_eat(t_philo *philos);
+int		check_time_to_die(t_philo *philos);
 
 #endif
