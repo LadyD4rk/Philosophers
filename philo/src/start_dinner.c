@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:25:39 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/20 14:18:29 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/20 22:38:23 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	*monitor_dinner(void *arg)
 			return (NULL);
 		if (check_time_to_die(philos))
 			return (NULL);
+		ft_usleep(1);
 	}
 	return (NULL);
 }
@@ -52,6 +53,7 @@ void	*routine(void *arg)
 void	start_dinner(t_philo *philos)
 {
 	int		id;
+	int		num;
 
 	id = 0;
 	while (id < philos->data->args.count_philo)
@@ -61,9 +63,10 @@ void	start_dinner(t_philo *philos)
 	}
 	pthread_create(&philos->data->waiter, NULL, &monitor_dinner, philos);
 	pthread_join(philos->data->waiter, NULL);
+	num = philos->data->id_dead;
+	if (num > 0)
+		printf("%ld %i died\n", ft_get_time() - philos[num].start_time, num);
 	id = 0;
-	if (philos->data->id_dead > 0)
-		print_write("died", &philos[philos->data->id_dead]);
 	while (id < philos->data->args.count_philo)
 	{
 		pthread_join(philos[id].philo, NULL);
