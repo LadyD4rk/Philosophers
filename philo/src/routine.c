@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:13:41 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/22 11:38:51 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/26 14:05:48 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,3 @@ void	philo_think(t_philo *philo)
 {
 	print_write("is thinking", philo);
 }
-
-/* ◦ timestamp_in_ms X has taken a fork
-◦ timestamp_in_ms X is eating
-◦ timestamp_in_ms X is sleeping
-◦ timestamp_in_ms X is thinking
-◦ timestamp_in_ms X died */

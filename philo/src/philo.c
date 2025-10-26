@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:28:13 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/19 21:13:31 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/26 14:12:00 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ int	main(int ac, char **av)
 	{
 		if (is_valid_argument(ac, av) == 0)
 			return (1);
+		if (ft_atoi(av[1]) == 1)
+		{
+			printf("0 1 has taken a fork\n");
+			ft_usleep(ft_atoi(av[2]));
+			printf("%i 1 died\n", ft_atoi(av[2]));
+			return (0);
+		}
 		if (initialize_all(&data, av))
 		{
 			ft_putstr_fd("ERROR: Failed to initialize arguments", 2);
