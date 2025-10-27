@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:25:39 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/22 11:35:13 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/10/27 10:59:01 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	start_dinner(t_philo *philos)
 	pthread_join(philos->data->waiter, NULL);
 	num = philos->data->id_dead;
 	if (num > 0)
-		printf("%ld %i died\n", ft_get_time() - philos[num].start_time, num);
+		printf("%ld %i died\n", ft_get_time() - philos[num - 1].start_time,
+			num);
 	id = 0;
 	while (id < philos->data->args.count_philo)
 	{
