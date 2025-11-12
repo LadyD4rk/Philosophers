@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:28:13 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/11/11 23:28:32 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/11/12 00:25:03 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int ac, char **av)
 		if (ft_atoi(av[1]) == 1)
 		{
 			printf("0 1 has taken a fork\n");
-			ft_usleep(ft_atoi(av[2]));
+			usleep(ft_atoi(av[2]) * 1000);
 			printf("%i 1 died\n", ft_atoi(av[2]));
 			return (0);
 		}

@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:23:30 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/11/11 23:27:16 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/11/12 00:15:18 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		is_valid_argument(int ac, char **av);
 void	*ft_calloc(size_t num, size_t tam);
 
 // aux/aux_function.c
-void	ft_usleep(int time);
+void	ft_usleep(t_data *data, int time);
 long	ft_get_time(void);
 void	print_write(char *str, t_philo *philo);
 

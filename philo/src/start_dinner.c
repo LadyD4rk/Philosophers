@@ -6,7 +6,7 @@
 /*   By: jobraga- <jobraga-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:25:39 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/11/12 00:00:50 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/11/12 00:16:37 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	data = philo->data;
 	if (philo->id % 2 == 0)
-		ft_usleep(10);
+		ft_usleep(data, 10);
 	while (!check_dead(data))
 	{
 		philo_eat(philo);

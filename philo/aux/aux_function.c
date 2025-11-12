@@ -6,15 +6,27 @@
 /*   By: jobraga- <jobraga-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:43:42 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/11/11 23:27:27 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/11/12 00:29:45 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	ft_usleep(int time)
+void	ft_usleep(t_data *data, int time)
 {
-	usleep(time * 1000);
+	long	start;
+	long	elapsed;
+
+	start = ft_get_time();
+	while (1)
+	{
+		if (check_dead(data))
+			return ;
+		elapsed = ft_get_time() - start;
+		if (elapsed >= time)
+			break ;
+		usleep(1000);
+	}
 }
 
 long	ft_get_time(void)
