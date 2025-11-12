@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jobraga- <jobraga-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:23:30 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/20 14:12:07 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/11/11 23:27:16 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_philo
 	pthread_t		philo;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
-	long			start_time;
 	long			last_eat_time;
 	int				id;
 	int				count_eat;
@@ -62,6 +61,7 @@ typedef struct s_data
 	t_args			args;
 	t_philo			*philos;
 	t_mutex			mutex;
+	long			start_time;
 	int				id_dead;
 	int				dead_flag;
 	int				philo_check;

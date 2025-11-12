@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aux_function.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jobraga- <jobraga-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:43:42 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/20 10:53:17 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/11/11 23:27:27 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_write(char *str, t_philo *philo)
 	if (check_dead(philo->data))
 		return ;
 	pthread_mutex_lock(&philo->data->mutex.write_flag);
-	time = ft_get_time() - philo->start_time;
+	time = ft_get_time() - philo->data->start_time;
 	printf("%ld %i %s\n", time, philo->id, str);
 	pthread_mutex_unlock(&philo->data->mutex.write_flag);
 }

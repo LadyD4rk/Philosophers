@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jobraga- <jobraga-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:51:48 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/20 14:11:18 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/11/11 23:27:41 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	initialize_philo(t_philo *philo, int id, t_data *data)
 {
 	philo->data = data;
 	philo->last_eat_time = ft_get_time();
-	philo->start_time = ft_get_time();
 	philo->id = id + 1;
 	philo->count_eat = 0;
 	philo->limit_eat = 0;

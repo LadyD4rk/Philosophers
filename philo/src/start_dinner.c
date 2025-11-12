@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_dinner.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jobraga- <jobraga-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:25:39 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/27 10:59:01 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/11/12 00:00:50 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*monitor_dinner(void *arg)
 			return (NULL);
 		if (check_time_to_die(philos))
 			return (NULL);
-		ft_usleep(1);
+		usleep(500);
 	}
 	return (NULL);
 }
@@ -65,8 +65,12 @@ void	start_dinner(t_philo *philos)
 	pthread_join(philos->data->waiter, NULL);
 	num = philos->data->id_dead;
 	if (num > 0)
-		printf("%ld %i died\n", ft_get_time() - philos[num - 1].start_time,
-			num);
+	{
+		pthread_mutex_lock(&philos->data->mutex.write_flag);
+		printf("%ld %i died\n", ft_get_time()
+			- philos[num - 1].data->start_time, num);
+		pthread_mutex_unlock(&philos->data->mutex.write_flag);
+	}
 	id = 0;
 	while (id < philos->data->args.count_philo)
 	{

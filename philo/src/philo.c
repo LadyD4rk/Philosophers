@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jobraga- <jobraga-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 14:28:13 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/10/26 14:12:00 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/11/11 23:28:32 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	initialize_all(t_data *data, char **av)
 	data->philo_check = 0;
 	data->dead_flag = 0;
 	data->id_dead = 0;
+	data->start_time = ft_get_time();
 	initialize_args(&data->args, av);
 	if (initialize_mutex(data, &data->mutex))
 		return (1);
