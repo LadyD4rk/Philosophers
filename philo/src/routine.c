@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jobraga- <jobraga-@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: jobraga- <jobraga-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 16:13:41 by jobraga-          #+#    #+#             */
-/*   Updated: 2025/11/12 00:16:24 by jobraga-         ###   ########.fr       */
+/*   Updated: 2025/11/17 13:42:13 by jobraga-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void	philo_think(t_philo *philo)
 	print_write("is thinking", philo);
 	if (philo->data->args.count_philo % 2 != 0)
 		if (philo->data->args.time_eat >= philo->data->args.time_sleep)
-			ft_usleep(philo->data, (philo->data->args.time_eat * 2) \
-			- philo->data->args.time_sleep);
+			ft_usleep(philo->data, (philo->data->args.time_eat * 2)
+				- philo->data->args.time_sleep);
 }
